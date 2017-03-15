@@ -30,7 +30,15 @@ class Exp_model extends CI_Model {
 		{
 			$this->db->like('amount', $this->input->post('amount'));
 		}
-		if($this->input->post('expdate'))
+		if($this->input->post('expdate_to') && $this->input->post('expdate'))
+		{
+			$this->db->where('expdate between "'.$this->input->post('expdate').'" AND "'.$this->input->post('expdate_to').'" ');
+		}
+		else if($this->input->post('expdate_to'))
+		{
+			$this->db->where('expdate <=', $this->input->post('expdate_to'));
+		}
+		else if($this->input->post('expdate'))
 		{
 			$this->db->like('expdate', $this->input->post('expdate'));
 		}

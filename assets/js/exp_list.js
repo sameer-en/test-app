@@ -21,6 +21,7 @@ $(document).ready(function() {
                 data.userid = $('#userid').val();
                 data.amount = $('#amount').val();
                 data.expdate = $('#expdate').val();
+                data.expdate_to = $('#expdate_to').val();
                 data.exptype = $('#exptype').val();
                 // data.address = $('#address').val();
             } ,
@@ -68,7 +69,7 @@ $(document).ready(function() {
         table.ajax.reload(null,false);  //just reload table
     });
 
-    $( "#expdate" ).datepicker({
+    $( "#expdate,#expdate_to" ).datepicker({
         dateFormat :'yy-mm-dd',
         changeMonth: true,
         changeYear: true

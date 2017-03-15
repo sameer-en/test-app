@@ -40,6 +40,10 @@
                                     <div class="col-sm-4">
                                          <input type="text" class="form-control" id="expdate" name="expdate">
                                     </div>
+                                     <label for="expdate" class="col-sm-2 control-label">To Date</label>
+                                    <div class="col-sm-4">
+                                         <input type="text" class="form-control" id="expdate_to" name="expdate_to">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="LastName" class="col-sm-2 control-label"></label>

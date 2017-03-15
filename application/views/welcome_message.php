@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+$this->load->helper('date');
+$this->load->helper('directory');
+
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,10 +84,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<code>application/controllers/Welcome.php</code>
 
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-	</div>
+		<p>
+		<?php 
 
+/*$post_date = time() - 99999999;
+$now = time();
+$units = 2;
+echo "<p>".timespan($post_date, $now, $units)."</p>";*/
+
+$map = directory_map('./assets/', FALSE, TRUE);
+echo "<p><pre>";print_r($map);echo "</pre></p>";
+
+
+		echo $this->lang->line('custom_lbl1');?>
+		</p>
+	</div>
+	
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
+<script>
+	/*var script = document.createElement('script');
+	script.onload = function() {
+  		alert("Script loaded and ready");
+	};
+	script.src = "http://localhost/exp/assets/js/exp_add.js";
+	document.getElementsByTagName('head')[0].appendChild(script);
+
+
+	var script = document.createElement('script');
+	script.onload = function() {
+  		alert("Script loaded and ready");
+	};
+	script.src = "http://localhost/exp/assets/js/exp_list.js";
+	document.getElementsByTagName('head')[0].appendChild(script);*/
+
+</script>
+<script src="//localhost/exp/assets/jquery/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+SITE_URL = "//localhost/exp/";
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://");//www.
+
+$(function(){
+	alert("Jquery loaded!!!");
+
+});
+
+var script = document.createElement('script');
+script.src = gaJsHost+"localhost/exp/assets/js/common.js";
+document.getElementsByTagName('head')[0].appendChild(script);
+
+
+//document.write(unescape("%3Cscript src='" + gaJsHost + "localhost/exp/assets/jquery/jquery-2.2.3.min.js' type='text/javascript'%3E%3C/script%3E"));
+document.write(unescape("%3Cscript src='" + gaJsHost + "localhost/exp/assets/js/exp_list.js' type='text/javascript'%3E%3C/script%3E"));
+document.write(unescape("%3Cscript src='" + gaJsHost + "localhost/exp/assets/js/exp_add.js' type='text/javascript'%3E%3C/script%3E"));
+
+
+</script>
+<script>
+	
+$(function(){
+	samu();
+});
+</script>
+
 
 </body>
 </html>
