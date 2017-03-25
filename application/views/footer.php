@@ -41,7 +41,7 @@
 <?php 
 if(isset($arr_js)) { 
 foreach($arr_js as $src) { ?>
-        <script src="<?php echo $src?>"></script>
+<script src="<?php echo $src?>"></script>
 <?php  } 
  } ?>
 </body>
