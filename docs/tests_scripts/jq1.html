@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript">
+
+(function ( $ ) {
+  'use strict'
+    $.fn.greenify = function( options ) {
+ 		var plugin_data = {};
+ 		var response = {};
+ 		var i = 0;
+ 		var str = '';
+        // This is the easiest way to have default options.
+        var settings = $.extend({
+            // These are the defaults.
+            color : "#556b2f",
+            backgroundColor : "white",
+            complete    : null,
+            getData     : function(){
+	            			$.ajax({
+	            				url:'oops.php',
+	            				method :'post',
+	            				async :false,
+	            				data :{'param1':1,'param2':2},
+	            				dataType:"json",
+	            				success: function(response){
+	            						plugin_data = response.data;
+	            				},
+	            			});
+            },
+            processData : function(){
+            		response = plugin_data;
+            		str = '<table width="100%" cellpadding="5" cellspacing="0">';
+            		for(i=0;i < response.length;i++)
+            		{
+            			str += '<tr>';
+            			str += '<td>';
+            			str += response[i].fname;
+            			str += '</td>';
+            			str += '<td>';
+            			str += response[i].lname;
+            			str += '</td>';
+            			str += '</tr>';
+            		}
+            		str += '</table>';
+            		if($('#content').append(str))
+            		{
+            			if ( $.isFunction( settings.complete ) ) {
+		       			 		settings.complete.call( this );
+		    				}
+            		}
+            },
+            complete: function(){
+            	//alert('Completed');
+            },
+        }, options );
+ 
+	 	return this.each( function() {
+		    $(this).css({
+	            color: settings.color,
+	            backgroundColor: settings.backgroundColor
+	        });
+
+		     if ( $.isFunction( settings.getData ) ) {
+		        settings.getData.call( this );
+		    }
+
+		    if ( $.isFunction( settings.processData ) ) {
+		        settings.processData.call( this );
+		    }
+
+		   
+
+	});
+   };
+
+}( jQuery ));
+
+
+$(document).ready(function(){
+	$( '#tab').greenify({
+		'color'		 :"#ff0000",
+		/*'complete'   : function() {
+						 console.log( 'Done!' ) ;
+						},*/
+
+		}); // Makes all the links green.
+$('a').css({'cursor':'pointer'});
+	$('#mobile').click(function(){
+		$('#content').css({"width":320});
+		$('#content').css({"height":480});
+	});
+
+	$('#tab').click(function(){
+		$('#content').css({"width":768});
+		$('#content').css({"height":1024});
+	});
+
+	$('#desktop').click(function(){
+		$('#content').css({"width":1280});
+		$('#content').css({"height":1024});
+	});
+});
+
+	</script>
+
+	</head>
+	<body>
+		<h1>Demo</h1>
+		<a id="mobile">Mobile</a> | <a id="tab">Tab</a> | <a id="desktop">Desktop</a>   
+		<div id="content" style="width: 100%;height: 80%;margin-top:10px;">
+			<!-- <iframe src="http://devdms/" width="100%" height="100%"></iframe> -->
+		</div>
+
+	</body>
+
+</html>

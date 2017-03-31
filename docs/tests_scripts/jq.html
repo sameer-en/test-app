@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript">
+
+(function ( $ ) {
+ 
+    $.fn.greenify = function( options ) {
+ 
+        // This is the easiest way to have default options.
+        var settings = $.extend({
+            // These are the defaults.
+            color: "#556b2f",
+            backgroundColor: "white"
+        }, options );
+ 
+        // Greenify the collection based on the settings variable.
+        return this.css({
+            color: settings.color,
+            backgroundColor: settings.backgroundColor
+        });
+ 
+    };
+ 
+}( jQuery ));
+
+
+
+$(document).ready(function(){
+	$( "a" ).greenify({'color':"#ff0000"}); // Makes all the links green.
+$('a').css({'cursor':'pointer'});
+	$('#mobile').click(function(){
+		$('#content').css({"width":320});
+		$('#content').css({"height":480});
+	});
+
+	$('#tab').click(function(){
+		$('#content').css({"width":768});
+		$('#content').css({"height":1024});
+	});
+
+	$('#desktop').click(function(){
+		$('#content').css({"width":1280});
+		$('#content').css({"height":1024});
+	});
+});
+
+	</script>
+
+	</head>
+	<body>
+		<h1>Demo</h1>
+		<a id="mobile">Mobile</a> | <a id="tab">Tab</a> | <a id="desktop">Desktop</a>   
+		<div id="content" style="width: 100%;height: 80%;margin-top:10px;">
+			<iframe src="http://devdms/" width="100%" height="100%"></iframe>
+		</div>
+
+	</body>
+
+</html>

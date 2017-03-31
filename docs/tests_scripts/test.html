@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>TEST</title>
+<style>
+#message { font-weight: bold; }
+
+#gist {width:50%;padding:5px;margin:20px auto;}
+</style>
+<script type="application/javascript">
+//window.onload = initia;
+function initia(){
+	//alert(document.title);
+	//document.location.pathname.
+	//alert(document.location.pathname);
+	console.log(document);
+}
+
+
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+addLoadEvent(initia);
+
+/*addLoadEvent(function() {
+   more code to run on page load 
+});*/
+
+
+/*
+setInterval( checkPageFocus, 200 );
+
+function checkPageFocus() {
+  var info = document.getElementById("message");
+
+  if ( document.hasFocus() ) {
+    info.innerHTML = "The document has the focus.";
+  } else {
+    info.innerHTML = "The document doesn't have the focus.";
+  }
+}
+
+function openWindow() {
+  window.open (
+    "http://developer.mozilla.org/",
+    "mozdev",
+    640,
+    300,
+    150,
+    260
+  );
+}
+
+function test()
+{
+	var myArray = ['Manchester', 'London', 'Liverpool', 'Birmingham', 'Leeds', 'Carlisle'];
+	console.log(myArray);
+	myArray.unshift('Liverpool');
+	console.log(myArray);
+	var removedItem = myArray.shift();
+	console.log(myArray);
+	removedItem;
+
+}
+*/
+
+</script>
+</head>
+<body>
+  <h1>JavaScript hasFocus example</h1>
+  <div id="message">Waiting for user action</div>
+  <div><button onclick="test()">Open a new window</button></div>
+  <div id='gist'>
+  <script src="https://gist.github.com/sameer-en/1cf7372faf4fbbe8e3aaa9a3245569f2.js"></script>
+  https://gist.github.com/sameer-en/1cf7372faf4fbbe8e3aaa9a3245569f2
+  </div>
+</body>
+</html>
